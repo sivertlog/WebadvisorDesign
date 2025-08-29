@@ -15,6 +15,6 @@ jobs:
     - name: Add to Project
       run: |
         # Set your project name
-        project_name="@viable2005's Agile Scrum Project"
+        project_name="@WebadvisorProject"
         # Add the issue to the project using gh
         gh issue edit ${{ github.event.issue.number }} --add-project "$project_name"
