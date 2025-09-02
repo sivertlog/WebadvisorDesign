@@ -44,7 +44,7 @@ body:
         Create a "Task Issue" then use the text-area's create a task list linking each task to this user-story with the # syntax."
         e.g. - [ ] #5555"
     validations:
-      required: true
+      required: false
   - type: textarea
     id: acceptance-criteria
     attributes:
