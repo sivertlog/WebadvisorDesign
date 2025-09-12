@@ -1,0 +1,29 @@
+classDiagram
+    Subject <|.. StudentEnrollRequest: implements
+    Observer <|.. EnrollRequestObserver: implements
+    StudentEnrollRequest "0" --> "*" Observer : Association
+    EnrollRequestObserver "0" --> "*" Subject : Association
+    class Observer{
+        &lt;&lt;interface&gt;&gt;
+        +update(): void
+        +setSubject(Subject): void
+    }
+    class EnrollRequestObserver{
+        +update(): void
+        +setSubject(Subject): void
+    }
+    class Subject{
+        &lt;&lt;interface&gt;&gt;
+        +registerObserver(Observer):void
+        +unregisterObserver(Observer):void
+        +notifyObservers():void
+        +getState():Object
+        +setState(Object):void
+    }
+    class StudentEnrollRequest{
+        +registerObserver(Observer):void
+        +unregisterObserver(Observer):void
+        +notifyObservers():void
+        +getState():Object
+        +setState(Object):void
+    }
