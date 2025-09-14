@@ -9,6 +9,7 @@ classDiagram
         +setSubject(Subject): void
     }
     class EnrollRequestObserver{
+        -list subjects
         +update(): void
         +setSubject(Subject): void
     }
@@ -21,6 +22,7 @@ classDiagram
         +setState(Object):void
     }
     class StudentEnrollRequest{
+        -list students
         +registerObserver(Observer):void
         +unregisterObserver(Observer):void
         +notifyObservers():void
