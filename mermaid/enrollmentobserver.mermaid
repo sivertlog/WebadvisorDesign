@@ -6,26 +6,34 @@ classDiagram
     class Observer{
         &lt;&lt;interface&gt;&gt;
         +update(): void
-        +setSubject(Subject): void
+        +registerRequest(Subject): void
+        +unregisterRequest(Subject): void
+        +setEnrollment(Subject): void
+        +removeEnrollment(Subject): void
     }
     class EnrollRequestObserver{
-        -list subjects
+        -list enrollRequests
         +update(): void
-        +setSubject(Subject): void
+        +registerRequest(Subject): void
+        +unregisterRequest(Subject): void
+        +setEnrollment(Subject): void
+        +removeEnrollment(Subject): void
     }
     class Subject{
         &lt;&lt;interface&gt;&gt;
         +registerObserver(Observer):void
         +unregisterObserver(Observer):void
-        +notifyObservers():void
+        +requestEnroll():void
         +getState():Object
         +setState(Object):void
     }
     class StudentEnrollRequest{
-        -list students
+        -int classID
+        -int studentID
+        -list observer
         +registerObserver(Observer):void
         +unregisterObserver(Observer):void
-        +notifyObservers():void
+        +requestEnroll():void
         +getState():Object
         +setState(Object):void
     }
