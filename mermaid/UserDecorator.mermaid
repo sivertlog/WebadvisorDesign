@@ -7,35 +7,46 @@ classDiagram
     UserDecorator *-- User : composition
     class User{
         &lt;&lt;interface&gt;&gt;
-        +methodA()
-        +methodB()
+        +getUserName()
+        +logOut()
     }
     class DefaultUser{
         +DefaultUser()
-        +methodA()
-        +methodB()
+        +getUserName()
+        +logOut()
     }
     class UserDecorator{
         User wrappedComponent
         UserDecorator(User)
-        +methodA()
-        +methodB()
+        +getUserName()
+        +logOut()
     }
     class Admin{
         +Admin(User)
-        +methodA()
-        +methodB()
-        +adminStuff()
+        +getUserName()
+        +logOut()
+        +checkRequests()
+        +approveRequest()
+    }
+    class Instructor{
+        +Instructor(User)
+        +getUserName()
+        +logOut()
+        +checkRequests()
+        +approveRequest()
     }
     class Staff{
         +Staff(User)
-        +methodA()
-        +methodB()
-        +staffThings()
+        +getUserName()
+        +logOut()
+        +checkRequests()
+        +approveRequests()
     }
     class Student{
         +Student(User)
-        +methodA()
-        +methodB()
-        +studentBusiness()
+        +getUserName()
+        +logOut()
+        +requestEnroll()
+        +dropClass()
+        +checkSchedule()
     }
