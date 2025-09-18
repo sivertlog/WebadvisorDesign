@@ -1,0 +1,41 @@
+classDiagram
+    DefaultUser ..|> User : implements
+    UserDecorator ..|> User : implements
+    Admin --|> UserDecorator : extends
+    Staff --|> UserDecorator : extends
+    Student --|> UserDecorator : extends
+    UserDecorator *-- User : composition
+    class User{
+        &lt;&lt;interface&gt;&gt;
+        +methodA()
+        +methodB()
+    }
+    class DefaultUser{
+        +DefaultUser()
+        +methodA()
+        +methodB()
+    }
+    class UserDecorator{
+        User wrappedComponent
+        UserDecorator(User)
+        +methodA()
+        +methodB()
+    }
+    class Admin{
+        +Admin(User)
+        +methodA()
+        +methodB()
+        +adminStuff()
+    }
+    class Staff{
+        +Staff(User)
+        +methodA()
+        +methodB()
+        +staffThings()
+    }
+    class Student{
+        +Student(User)
+        +methodA()
+        +methodB()
+        +studentBusiness()
+    }
