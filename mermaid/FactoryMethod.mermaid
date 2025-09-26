@@ -1,0 +1,34 @@
+classDiagram
+    UI <|-- StudentUI : implements
+    UI <|-- AdminUI : implements
+    UI <|-- StaffUI : implements
+    Creator <|-- StudentUICreator : extends
+    Creator <|-- AdminUICreator : extends
+    Creator <|-- StaffUICreator : extends
+    StudentUICreator --> StudentUI
+    AdminUICreator --> AdminUI
+    StaffUICreator --> StaffUI
+
+    class StudentUI{
+    }
+    class AdminUI{
+    }
+    class StaffUI{
+    }
+    class Creator{
+        &lt;&lt;abstract&gt;&gt;
+        +createUI(): UI
+        +otherOperations(): void
+    }
+    class StudentUICreator{
+        +createUI(): StudentUI
+    }
+    class AdminUICreator{
+        +createUI(): AdminUI
+    }
+    class StaffUICreator{
+        +createUI(): StaffUI
+    }
+    class UI{
+        &lt;&lt;interface&gt;&gt;
+    }
