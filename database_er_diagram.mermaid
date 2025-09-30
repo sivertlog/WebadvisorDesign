@@ -1,0 +1,87 @@
+erDiagram
+    USER }o--o{ USER_ROLE_LINK : user_id
+    USER_ROLE_LINK }o--o{ ROLE : role_id
+    ROLE }o--o{ ROLE_PERMISSION_LINK : role_id
+    ROLE_PERMISSION_LINK }o--o{ PERMISSION : permission_id
+    OPERATION }o--o{ OPERATION_PERMISSION_LINK : operation_id
+    OPERATION_PERMISSION_LINK }o--o{ PERMISSION : permission_id
+    COMPONENT }o--o{ COMPONENT_PERMISSION_LINK : component_id
+    COMPONENT_PERMISSION_LINK }o--o{ PERMISSION : permission_id
+
+
+	
+	COURSE {
+    int course_id
+    int section_id
+    varchar(30) name
+    varchar(20) department
+    varchar(10) campus
+    varchar(5) term
+    varchar(30) days_offered
+    varchar(20) times_offered
+    varchar(10) availiability
+    int credits
+    }
+	
+	USER {
+	int user_id
+	%%	2XXXXXX : STUDENT
+	%%	5XXXXXX : PROFESSOR
+	%%	7XXXXXX : ADMIN
+	varchar(30) user_username
+	varchar(50) first_name
+	varchar(50) last_name
+	varchar(254) email
+	}
+	
+	USER_ROLE_LINK {
+	int user_id
+	int role_id
+	}
+	
+	ROLE {
+	int role_id
+	%%	1XX
+	%%	2XX
+	%%	5XX
+	%%	6XX
+	%%	7XX
+	varchar(20) role_name
+	%%	GUEST
+	%%	STUDENT
+	%%	PROFESSOR
+	%%	ADVISOR
+	%%	ADMINISTRATOR
+	}
+	
+	ROLE_PERMISSION_LINK {
+	int role_id
+	int permission_id
+	}
+	
+	OPERATION {
+	int operation_id
+	varchar(255) operation_route
+	int operation_type
+	}
+	
+	OPERATION_PERMISSION_LINK {
+	int operation_id
+	int permission_id
+	}
+	
+	PERMISSION {
+	int permission_id
+	varchar(255) permission_name
+	}
+	
+	COMPONENT_PERMISSION_LINK {
+	int component_id
+	int permission_id
+	}
+	
+	COMPONENT {
+	int component_id
+	varchar(255) component_name
+	int component_type
+	}
