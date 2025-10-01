@@ -11,8 +11,8 @@ import java.util.Objects;
 public class User {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    //check ^here^ maybe need to change
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    //check ^here^ maybe need to change, was set to AUTO w/ MYSQL
     private Integer userId;
     private String userName;
     private String firstName;

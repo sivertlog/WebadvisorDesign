@@ -24,6 +24,12 @@ public class UserController {
     }
 
     @PostMapping(path="/add")
+    /*
+    public @ResponseBody User add(@RequestParam String userName,
+                                    @RequestParam String firstName,
+                                    @RequestParam String lastName,
+                                    @RequestParam String primaryEmail) {
+     */
     public @ResponseBody String add(@RequestParam String userName,
                                     @RequestParam String firstName,
                                     @RequestParam String lastName,
@@ -34,6 +40,7 @@ public class UserController {
         u.setLastName(lastName);
         u.setPrimaryEmail(primaryEmail);
         userRepository.save(u);
+        //return userRepository.save(u);
         return "Saved";
     }
 }
