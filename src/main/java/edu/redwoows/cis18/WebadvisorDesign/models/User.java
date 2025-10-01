@@ -12,6 +12,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
+    //check ^here^ maybe need to change
     private Integer userId;
     private String userName;
     private String firstName;
