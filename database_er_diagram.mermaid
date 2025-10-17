@@ -1,18 +1,18 @@
 erDiagram
-    USER }o--o{ USER_ROLE_LINK : user_id
-    USER_ROLE_LINK }o--o{ ROLE : role_id
-    ROLE }o--o{ ROLE_PERMISSION_LINK : role_id
-    ROLE_PERMISSION_LINK }o--o{ PERMISSION : permission_id
-    OPERATION }o--o{ OPERATION_PERMISSION_LINK : operation_id
-    OPERATION_PERMISSION_LINK }o--o{ PERMISSION : permission_id
-    COMPONENT }o--o{ COMPONENT_PERMISSION_LINK : component_id
-    COMPONENT_PERMISSION_LINK }o--o{ PERMISSION : permission_id
+    USER |o--|{ USER_ROLE_LINK : user_id
+    USER_ROLE_LINK }|--o| ROLE : role_id
+    ROLE |o--|{ ROLE_PERMISSION_LINK : role_id
+    ROLE_PERMISSION_LINK }|--o| PERMISSION : permission_id
+    OPERATION |o--|{ OPERATION_PERMISSION_LINK : operation_id
+    OPERATION_PERMISSION_LINK }|--o| PERMISSION : permission_id
+    COMPONENT |o--|{ COMPONENT_PERMISSION_LINK : component_id
+    COMPONENT_PERMISSION_LINK }|--o| PERMISSION : permission_id
 
 
 	
 	COURSE {
-    int course_id
-    int section_id
+    int course_id PK
+    int section_id PK
     varchar(30) name
     varchar(20) department
     varchar(10) campus
@@ -24,7 +24,7 @@ erDiagram
     }
 	
 	USER {
-	int user_id
+	int user_id PK
 	%%	2XXXXXX : STUDENT
 	%%	5XXXXXX : PROFESSOR
 	%%	7XXXXXX : ADMIN
@@ -35,12 +35,12 @@ erDiagram
 	}
 	
 	USER_ROLE_LINK {
-	int user_id
-	int role_id
+	int user_id PK,FK
+	int role_id PK,FK
 	}
 	
 	ROLE {
-	int role_id
+	int role_id PK
 	%%	1XX
 	%%	2XX
 	%%	5XX
@@ -55,33 +55,34 @@ erDiagram
 	}
 	
 	ROLE_PERMISSION_LINK {
-	int role_id
-	int permission_id
+	int role_id PK,FK
+	int permission_id PK,FK
 	}
 	
 	OPERATION {
-	int operation_id
+	int operation_id PK
 	varchar(255) operation_route
 	int operation_type
 	}
 	
 	OPERATION_PERMISSION_LINK {
-	int operation_id
-	int permission_id
+	int operation_id PK,FK
+	int permission_id PK,FK
 	}
 	
 	PERMISSION {
-	int permission_id
+	int permission_id PK
 	varchar(255) permission_name
 	}
 	
 	COMPONENT_PERMISSION_LINK {
-	int component_id
-	int permission_id
+	int component_id PK,FK
+	int permission_id PK,FK
 	}
 	
 	COMPONENT {
-	int component_id
+	int component_id PK
 	varchar(255) component_name
 	int component_type
+
 	}
