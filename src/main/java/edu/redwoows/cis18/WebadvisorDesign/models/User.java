@@ -1,74 +1,62 @@
 package edu.redwoows.cis18.WebadvisorDesign.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-import java.util.Objects;
+import jakarta.persistence.*;
+import java.util.Set;
 
 @Entity
+@Table(name = "user")
 public class User {
-
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    //check ^here^ maybe need to change, was set to AUTO w/ MYSQL
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Integer userId;
-    private String userName;
-    private String firstName;
-    private String lastName;
-    private String primaryEmail;
 
-    public Integer getUserId() {
-        return userId;
+    @Column(name = "user_username")
+    private String userUsername;
+
+    @Column(name = "user_email")
+    private String userEmail;
+
+    @Column(name = "user_password_hash")
+    private String userPasswordHash;
+
+    @Column(name = "user_salt")
+    private String userSalt;
+
+    @ManyToMany
+    @JoinTable(
+            name = "userrolelink",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles;
+
+    // Constructors
+    public User() {}
+
+    public User(String userUsername, String userPasswordHash, String userSalt) {
+        this.userUsername = userUsername;
+        this.userPasswordHash = userPasswordHash;
+        this.userSalt = userSalt;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
+    // Getters and Setters
+    public Integer getUserId() { return userId; }
+    public void setUserId(Integer userId) { this.userId = userId; }
 
-    public String getUserName() {
-        return userName;
-    }
+    public String getUserUsername() { return userUsername; }
+    public void setUserUsername(String userUsername) { this.userUsername = userUsername; }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+    public String getUserEmail() { return userEmail; }
+    public void setUserEmail(String userEmail) { this.userEmail = userEmail; }
 
-    public String getPrimaryEmail() {
-        return primaryEmail;
-    }
+    public String getUserPasswordHash() { return userPasswordHash; }
+    public void setUserPasswordHash(String userPasswordHash) { this.userPasswordHash = userPasswordHash; }
 
-    public void setPrimaryEmail(String primaryEmail) {
-        this.primaryEmail = primaryEmail;
-    }
+    public String getUserSalt() { return userSalt; }
+    public void setUserSalt(String userSalt) { this.userSalt = userSalt; }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return userId.equals(user.userId);
-    }
+    public Set<Role> getRoles() { return roles; }
+    public void setRoles(Set<Role> roles) { this.roles = roles; }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(userId);
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 }
