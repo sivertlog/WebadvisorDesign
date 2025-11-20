@@ -1,10 +1,10 @@
 classDiagram
 
-    StudentView ..|> ViewState
-    InstructorView ..|> ViewState
-    AdminView ..|> ViewState
+    StudentView ..|> ViewState : implements
+    InstructorView ..|> ViewState : implements
+    AdminView ..|> ViewState : implements
     User --> ViewContext
-    ViewContext *.. ViewState
+    ViewContext *.. ViewState : composition
 
 
     class User
