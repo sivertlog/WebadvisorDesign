@@ -1,0 +1,36 @@
+classDiagram
+
+    StudentView ..|> ViewState
+    InstructorView ..|> ViewState
+    AdminView ..|> ViewState
+    User --> ViewContext
+    ViewContext *.. ViewState
+
+
+    class User
+
+    class ViewContext {
+        -ViewState state
+
+        +changeView() : "state.doStuff()"
+    }
+
+    class ViewState {
+        <<interface>>
+        +doStuff()
+    }
+    class StudentView {
+        -ViewContext context
+
+        +doStuff()
+    }
+    class InstructorView {
+        -ViewContext context
+
+        +doStuff()
+    }
+    class AdminView {
+        -ViewContext context
+
+        +doStuff()
+    }
