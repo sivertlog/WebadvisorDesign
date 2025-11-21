@@ -13,7 +13,7 @@
 
 ### Sprint 4:
 - Repository abandoned due to internal conflict.
-- Project transferred to Python (w/ Flask and SQLAlchemy) as `WebAdvisorReboot` under TheMetroid7998's ownership.
+- Project transferred to Python (w/ Flask and SQLAlchemy) as [WebAdvisorReboot](https://github.com/TheMetroid7998/WebAdvisorReboot) under [TheMetroid7998's](https://github.com/TheMetroid7998) ownership.
 
 ### Sprint 5:
 - *See Sprint 4*
